@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samsung US | Mobile | TV | Home Electronics | Home Appliances</title>
+  <!-- Google Fonts: Plus Jakarta Sans & Inter (Closest web match to Samsung Sharp Sans & SamsungOne) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom Samsung Design System CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       1. SAMSUNG GLOBAL NAVIGATION BAR & MEGA-MENU FLYOUT
+       ===================================================================== -->
+  <header id="samsung-header" class="samsung-header" role="banner">
+    <div class="container-samsung nav-wrapper">
+      <!-- Samsung Wordmark Logo -->
+      <a href="#top" class="samsung-logo" aria-label="Samsung Home">
+        <svg width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="23" fill="currentColor" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="21" letter-spacing="1.6">SAMSUNG</text>
+        </svg>
+      </a>
+
+      <!-- Primary Left Navigation Links -->
+      <nav class="nav-primary" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item" data-mega="shop"><button class="nav-pill-btn">Shop</button></li>
+          <li class="nav-item" data-mega="mobile"><button class="nav-pill-btn">Mobile</button></li>
+          <li class="nav-item" data-mega="tv"><button class="nav-pill-btn">TV &amp; Audio</button></li>
+          <li class="nav-item" data-mega="appliances"><button class="nav-pill-btn">Appliances</button></li>
+          <li class="nav-item" data-mega="computing"><button class="nav-pill-btn">Computing &amp; Displays</button></li>
+          <li class="nav-item" data-mega="accessories"><button class="nav-pill-btn">Accessories</button></li>
+          <li class="nav-item"><a href="#do-what-you-cant" class="nav-pill-btn">SmartThings</a></li>
+          <li class="nav-item"><a href="#mobile-showcase" class="nav-pill-btn">AI</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Secondary Links & Utility Icons -->
+      <div class="nav-utilities">
+        <a href="#footer" class="nav-pill-btn nav-secondary-link">Support</a>
+        <a href="#footer" class="nav-pill-btn nav-secondary-link">For Business</a>
+
+        <!-- Search Icon Button -->
+        <button id="nav-search-trigger" class="nav-icon-btn" aria-label="Search Samsung.com">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Cart Icon Button with Badge -->
+        <button id="nav-cart-trigger" class="nav-icon-btn position-relative" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cart-badge" class="samsung-cart-badge">0</span>
+        </button>
+
+        <!-- User Account Icon -->
+        <button id="nav-user-trigger" class="nav-icon-btn" aria-label="Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Mobile Hamburger Menu Toggle -->
+        <button id="nav-mobile-trigger" class="nav-icon-btn d-xl-none" aria-label="Open Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Full-Width Mega Menu Dropdown Panel -->
+    <div id="samsung-mega-menu" class="samsung-mega-menu" aria-hidden="true">
+      <div class="container-samsung py-4" id="mega-menu-body">
+        <!-- Populated dynamically via script.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Backdrop Overlay for Mega Menu / Drawers -->
+  <div id="samsung-backdrop" class="samsung-backdrop"></div>
+
+  <!-- Mobile Offcanvas Drawer -->
+  <aside id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <span class="fw-bold">Menu</span>
+      <button id="mobile-drawer-close" class="btn-close" aria-label="Close Menu"></button>
+    </div>
+    <ul class="mobile-drawer-list">
+      <li><a href="#highlights" class="mobile-link">Shop Offers</a></li>
+      <li><a href="#mobile-showcase" class="mobile-link">Mobile</a></li>
+      <li><a href="#tv-showcase" class="mobile-link">TV &amp; Audio</a></li>
+      <li><a href="#appliances-showcase" class="mobile-link">Home Appliances</a></li>
+      <li><a href="#recommended" class="mobile-link">Computing &amp; Displays</a></li>
+      <li><a href="#do-what-you-cant" class="mobile-link">Explore Stories</a></li>
+      <li><a href="#footer" class="mobile-link">Support</a></li>
+    </ul>
+  </aside>
+
+  <!-- Search Overlay Modal -->
+  <div id="search-overlay" class="search-overlay" aria-hidden="true">
+    <div class="search-overlay-inner">
+      <button id="search-overlay-close" class="search-close-btn" aria-label="Close Search">&times;</button>
+      <h2 class="samsung-display-sm text-center mb-4">What are you looking for?</h2>
+      <div class="samsung-search-pill mx-auto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="overlay-search-input" placeholder="Galaxy S26 Ultra, Neo QLED 8K, Bespoke AI..." />
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+        <button class="chip-btn search-chip" data-query="Galaxy S26 Ultra">Galaxy S26 Ultra</button>
+        <button class="chip-btn search-chip" data-query="Galaxy Z Fold7">Galaxy Z Fold7</button>
+        <button class="chip-btn search-chip" data-query="The Frame TV">The Frame TV</button>
+        <button class="chip-btn search-chip" data-query="Bespoke AI Laundry">Bespoke AI Laundry</button>
+        <button class="chip-btn search-chip" data-query="Galaxy Ring">Galaxy Ring</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Slide-Over Drawer -->
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer-header">
+      <h3 class="h5 fw-bold mb-0">Your Cart</h3>
+      <button id="cart-drawer-close" class="btn-close" aria-label="Close Cart"></button>
+    </div>
+    <div id="cart-items-container" class="cart-items-container">
+      <p class="text-muted text-center my-5">Your Samsung cart is currently empty.</p>
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="d-flex justify-content-between fw-bold mb-3">
+        <span>Estimated Total</span>
+        <span id="cart-total-price">$0.00</span>
+      </div>
+      <button id="checkout-btn" class="btn-samsung btn-samsung-primary w-100">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- =====================================================================
+       MAIN SINGLE-PAGE CONTENT
+       ===================================================================== -->
+  <main id="top">
+
+    <!-- ===================================================================
+         2. HERO SHOWCASE CAROUSEL (Full-Bleed Edge-to-Edge + Segmented Progress)
+         =================================================================== -->
+    <section class="hero-carousel-section" aria-label="Featured Promotions">
+      <div class="hero-slider-viewport">
+        <div id="hero-slider-track" class="hero-slider-track">
+          <!-- Populated dynamically via script.js for crisp transitions & progress bar sync -->
+        </div>
+
+        <!-- Left / Right Circular Navigation Arrows -->
+        <button id="hero-prev" class="hero-arrow hero-arrow-prev" aria-label="Previous slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button id="hero-next" class="hero-arrow hero-arrow-next" aria-label="Next slide">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Bottom Segmented Progress Indicators + Play/Pause -->
+        <div class="hero-controls-bottom">
+          <div id="hero-indicators" class="hero-indicators"></div>
+          <button id="hero-play-pause" class="hero-pause-btn" aria-label="Pause hero slideshow">
+            <svg id="hero-icon-pause" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="1" width="3" height="10"/><rect x="7" y="1" width="3" height="10"/></svg>
+            <svg id="hero-icon-play" class="d-none" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><polygon points="2,1 11,6 2,11"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. "THIS WEEK'S HIGHLIGHTS" INTERACTIVE BENTO GRID
+         =================================================================== -->
+    <section id="highlights" class="section-spacing bg-white">
+      <div class="container-samsung">
+        <h2 class="samsung-section-title text-center mb-3">This Week’s Highlights</h2>
+
+        <!-- Interactive Category Tabs with Sliding Underline -->
+        <div class="samsung-tabs-wrapper mb-4">
+          <ul class="samsung-tabs" id="highlights-tabs" role="tablist">
+            <li><button class="samsung-tab active" data-category="featured">New &amp; Featured</button></li>
+            <li><button class="samsung-tab" data-category="mobile">Mobile</button></li>
+            <li><button class="samsung-tab" data-category="tv">TV &amp; Audio</button></li>
+            <li><button class="samsung-tab" data-category="appliances">Home Appliances</button></li>
+            <li><button class="samsung-tab" data-category="ecosystem">Ecosystem</button></li>
+          </ul>
+        </div>
+
+        <!-- Bento Grid (1 Large Feature Card Left + 2x2 Cards Right) -->
+        <div id="highlights-bento-grid" class="row g-3 g-lg-4">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. FULL-BLEED CATEGORY SHOWCASE: MOBILE & COMPUTING
+         =================================================================== -->
+    <section id="mobile-showcase" class="category-showcase-section theme-light">
+      <div class="container-samsung text-center">
+        <h2 class="samsung-section-title mb-3">Mobile &amp; Computing</h2>
+        <ul class="samsung-tabs mb-4" id="mobile-showcase-tabs">
+          <li><button class="samsung-tab active" data-idx="0">Galaxy S26 Ultra</button></li>
+          <li><button class="samsung-tab" data-idx="1">Galaxy Z Fold7</button></li>
+          <li><button class="samsung-tab" data-idx="2">Galaxy Tab S11 Ultra</button></li>
+          <li><button class="samsung-tab" data-idx="3">Galaxy Watch8</button></li>
+          <li><button class="samsung-tab" data-idx="4">Galaxy Ring</button></li>
+        </ul>
+
+        <div id="mobile-showcase-stage" class="showcase-stage">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. FULL-BLEED CATEGORY SHOWCASE: TV & AUDIO
+         =================================================================== -->
+    <section id="tv-showcase" class="category-showcase-section theme-dark">
+      <div class="container-samsung text-center">
+        <h2 class="samsung-section-title text-white mb-3">TV &amp; Audio</h2>
+        <ul class="samsung-tabs tabs-dark mb-4" id="tv-showcase-tabs">
+          <li><button class="samsung-tab active" data-idx="0">Neo QLED 8K</button></li>
+          <li><button class="samsung-tab" data-idx="1">OLED S95F</button></li>
+          <li><button class="samsung-tab" data-idx="2">The Frame</button></li>
+          <li><button class="samsung-tab" data-idx="3">Q-Series Soundbar</button></li>
+        </ul>
+
+        <div id="tv-showcase-stage" class="showcase-stage">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. FULL-BLEED CATEGORY SHOWCASE: HOME APPLIANCES
+         =================================================================== -->
+    <section id="appliances-showcase" class="category-showcase-section theme-warm">
+      <div class="container-samsung text-center">
+        <h2 class="samsung-section-title mb-3">Home Appliances</h2>
+        <ul class="samsung-tabs mb-4" id="appliances-showcase-tabs">
+          <li><button class="samsung-tab active" data-idx="0">Bespoke AI Laundry Combo™</button></li>
+          <li><button class="samsung-tab" data-idx="1">Bespoke 4-Door Flex™</button></li>
+          <li><button class="samsung-tab" data-idx="2">Bespoke Jet Bot Combo™ AI</button></li>
+          <li><button class="samsung-tab" data-idx="3">Bespoke Slide-in Range</button></li>
+        </ul>
+
+        <div id="appliances-showcase-stage" class="showcase-stage">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. "RECOMMENDED FOR YOU" PRODUCT CAROUSEL (With Color Swatches)
+         =================================================================== -->
+    <section id="recommended" class="section-spacing bg-white">
+      <div class="container-samsung">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="samsung-section-title mb-0">Recommended for you</h2>
+          <div class="d-flex gap-2">
+            <button id="rec-prev" class="rec-nav-btn" aria-label="Scroll left">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button id="rec-next" class="rec-nav-btn" aria-label="Scroll right">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="recommended-track" class="recommended-track">
+          <!-- Populated dynamically via script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         8. EXPLORE #DOWHATYOUCANT EDITORIAL INTERACTIVE SECTION
+         =================================================================== -->
+    <section id="do-what-you-cant" class="section-spacing bg-white border-top">
+      <div class="container-samsung">
+        <h2 class="samsung-section-title text-center mb-5">Explore #DoWhatYouCant</h2>
+        <div class="row align-items-center g-5">
+          <div class="col-12 col-lg-6">
+            <div id="editorial-visual" class="editorial-visual-box">
+              <!-- Updates dynamically on hover/click of story items -->
+            </div>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div id="editorial-list" class="editorial-list">
+              <!-- Interactive numbered stories populated via script.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         9. "LOOKING FOR SOMETHING ELSE?" SEARCH HUB
+         =================================================================== -->
+    <section class="section-spacing bg-white text-center">
+      <div class="container-samsung">
+        <h2 class="samsung-section-title mb-4">Looking for something else?</h2>
+        <div class="samsung-search-pill mx-auto mb-3" id="bottom-search-trigger">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search Keyword" readonly />
+        </div>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <button class="chip-btn search-chip" data-query="Galaxy S26 Ultra">Galaxy S26 Ultra</button>
+          <button class="chip-btn search-chip" data-query="Galaxy Z Flip7">Galaxy Z Flip7</button>
+          <button class="chip-btn search-chip" data-query="QLED 8K">QLED 8K</button>
+          <button class="chip-btn search-chip" data-query="The Frame">The Frame</button>
+          <button class="chip-btn search-chip" data-query="Bespoke Jet">Bespoke Jet</button>
+          <button class="chip-btn search-chip" data-query="Galaxy Watch8">Galaxy Watch8</button>
+          <button class="chip-btn search-chip" data-query="Accessories">Accessories</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       10. SAMSUNG GLOBAL FOOTER & DIRECTORY
+       ===================================================================== -->
+  <footer id="footer" class="samsung-footer" role="contentinfo">
+    <!-- Legal Disclaimers -->
+    <div class="footer-disclaimers">
+      <div class="container-samsung">
+        <p>* Image simulated for illustrative purposes. Actual UX/UI may differ.</p>
+        <p>** Galaxy AI features by Samsung are provided for free until the end of 2026 on supported Samsung Galaxy devices. Different terms may apply for AI features provided by third parties.</p>
+        <p>*** Savings and trade-in values depend on the condition, year, and configuration of your eligible trade-in device. Subject to credit approval.</p>
+      </div>
+    </div>
+
+    <!-- 5-Column Directory (Desktop) / Accordions (Mobile) -->
+    <div class="footer-directory">
+      <div class="container-samsung">
+        <div class="row g-0">
+          <div class="col-12 col-lg footer-col">
+            <button class="footer-col-title" aria-expanded="false">SHOP <span class="footer-chevron">&#9662;</span></button>
+            <ul class="footer-links">
+              <li><a href="#highlights">Phones</a></li>
+              <li><a href="#mobile-showcase">Tablets</a></li>
+              <li><a href="#mobile-showcase">Watches</a></li>
+              <li><a href="#mobile-showcase">Mobile Accessories</a></li>
+              <li><a href="#mobile-showcase">Mobile Audio</a></li>
+              <li><a href="#tv-showcase">TV &amp; Home Theater</a></li>
+              <li><a href="#recommended">Computing</a></li>
+              <li><a href="#recommended">Monitors</a></li>
+              <li><a href="#recommended">Memory &amp; Storage</a></li>
+              <li><a href="#appliances-showcase">Home Appliances</a></li>
+              <li><a href="#do-what-you-cant">Smart Home</a></li>
+              <li><a href="#highlights">Samsung Experience Stores</a></li>
+              <li><a href="#highlights">Apps &amp; Services</a></li>
+              <li><a href="#highlights">Shop Certified Re-Newed</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg footer-col">
+            <button class="footer-col-title" aria-expanded="false">SUPPORT <span class="footer-chevron">&#9662;</span></button>
+            <ul class="footer-links">
+              <li><a href="#footer">WhatsApp Us</a></li>
+              <li><a href="#footer">Chat with Us</a></li>
+              <li><a href="#footer">Order Help</a></li>
+              <li><a href="#footer">Product Help</a></li>
+              <li><a href="#footer">Your Account</a></li>
+              <li><a href="#footer">Register Your Product</a></li>
+              <li><a href="#footer">Request a Repair</a></li>
+              <li><a href="#footer">Contact Us</a></li>
+              <li><a href="#footer">Samsung Community</a></li>
+              <li><a href="#footer">Give Feedback</a></li>
+              <li><a href="#footer">Slide-in Electric Range Recall</a></li>
+              <li><a href="#footer">Manuals &amp; Software</a></li>
+              <li><a href="#footer">Returns</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg footer-col">
+            <button class="footer-col-title" aria-expanded="false">OFFERS <span class="footer-chevron">&#9662;</span></button>
+            <ul class="footer-links">
+              <li><a href="#highlights">Offers</a></li>
+              <li><a href="#highlights">Samsung Rewards</a></li>
+              <li><a href="#highlights">Education Offers Program</a></li>
+              <li><a href="#highlights">Government Offers Program</a></li>
+              <li><a href="#highlights">Military Offers Program</a></li>
+              <li><a href="#highlights">Employee Offers Program</a></li>
+              <li><a href="#highlights">First Responders Offers Program</a></li>
+              <li><a href="#highlights">Business Offers Program</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg footer-col">
+            <button class="footer-col-title" aria-expanded="false">SUSTAINABILITY <span class="footer-chevron">&#9662;</span></button>
+            <ul class="footer-links">
+              <li><a href="#do-what-you-cant">Overview</a></li>
+              <li><a href="#do-what-you-cant">Environment</a></li>
+              <li><a href="#do-what-you-cant">Digital Responsibility</a></li>
+              <li><a href="#do-what-you-cant">Security and Privacy</a></li>
+              <li><a href="#do-what-you-cant">Accessibility</a></li>
+              <li><a href="#do-what-you-cant">Labor &amp; Human Rights</a></li>
+              <li><a href="#do-what-you-cant">Diversity &middot; Equity &middot; Inclusion</a></li>
+              <li><a href="#do-what-you-cant">Sustainable Supply Chain</a></li>
+              <li><a href="#do-what-you-cant">Corporate Citizenship</a></li>
+              <li><a href="#do-what-you-cant">Corporate Sustainability</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-lg footer-col">
+            <button class="footer-col-title" aria-expanded="false">ABOUT US <span class="footer-chevron">&#9662;</span></button>
+            <ul class="footer-links">
+              <li><a href="#footer">Leadership &amp; Mission</a></li>
+              <li><a href="#footer">Our Business</a></li>
+              <li><a href="#footer">Brand Identity</a></li>
+              <li><a href="#footer">Careers</a></li>
+              <li><a href="#footer">Investor Relations</a></li>
+              <li><a href="#footer">Newsroom</a></li>
+              <li><a href="#footer">Ethics</a></li>
+              <li><a href="#footer">Samsung Design</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <div class="container-samsung d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+        <div class="d-flex flex-wrap align-items-center gap-3">
+          <span class="fw-bold text-dark">Copyright&copy; 1995-2026 SAMSUNG All Rights Reserved.</span>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-3 footer-legal-links">
+          <a href="#footer" class="fw-bold text-dark">USA/ENGLISH</a>
+          <a href="#footer">Privacy</a>
+          <a href="#footer">Do Not Sell Or Share My Personal Information</a>
+          <a href="#footer">Washington Privacy Notice</a>
+          <a href="#footer">Legal</a>
+          <a href="#footer">Accessibility Help</a>
+          <a href="#footer">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick Product Modal (Learn More / Specs) -->
+  <div id="product-detail-modal" class="samsung-modal" aria-hidden="true">
+    <div class="samsung-modal-dialog">
+      <button id="modal-close-btn" class="samsung-modal-close" aria-label="Close">&times;</button>
+      <div id="modal-content-target"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Samsung JS -->
+  <script src="script.js"></script>
+</body>
+</html>
